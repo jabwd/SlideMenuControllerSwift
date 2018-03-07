@@ -42,6 +42,8 @@ public struct SlideMenuOptions {
 }
 
 open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
+    
+    public var shouldPan: Bool = true
 
     public enum SlideAction {
         case open
@@ -360,6 +362,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func handleLeftPanGesture(_ panGesture: UIPanGestureRecognizer) {
+        guard shouldPan == true else { return }
         
         if !isTagetViewController() {
             return
